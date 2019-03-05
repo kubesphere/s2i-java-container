@@ -140,7 +140,7 @@ function test_image() {
   # Binary
   # ----------------------------------------------------------------------------------
 
-  mvn -f java/examples/maven/ clean package
+  mvn -f java/examples/maven/pom.xml clean package
   mkdir -p java/examples/binary/deployments/
   cp java/examples/maven/target/*.jar java/examples/binary/deployments/
 
