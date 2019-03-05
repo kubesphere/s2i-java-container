@@ -1,0 +1,5 @@
+# Main class not really required as already in the pom.xml,
+# it's just for illustration.  For all the optional available here,
+# see https://github.com/kubesphere/s2i-java-container/tree/master/java/images/centos
+
+JAVA_MAIN_CLASS=io.kubesphere.devops.s2i.example.Server
