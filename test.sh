@@ -10,7 +10,7 @@ function test_app() {
   local container_id=$(docker run --name ${name}-test -d -p ${port} ${name})
 
   # sleep is required because after docker run returns, the container is up but our server may not quite be yet
-  sleep 5
+  sleep 10
 
   local http_port="$(docker port ${container_id} ${port}|sed 's/0.0.0.0://')"
   local http_reply=$(curl --silent --show-error http://localhost:$http_port)
@@ -36,7 +36,7 @@ function test_metrics() {
   local container_id=$(docker run --name ${name}-test -d -p ${port} ${name})
 
   # sleep is required because after docker run returns, the container is up but our server may not quite be yet
-  sleep 5
+  sleep 10
 
   local metrics_port="$(docker port ${container_id} ${port}|sed 's/0.0.0.0://')"
   local metrics_reply=$(curl --silent --show-error http://localhost:$metrics_port/metrics)
