@@ -141,6 +141,7 @@ function test_image() {
   # ----------------------------------------------------------------------------------
 
   mvn -f java/examples/maven/ clean package
+  mkdir -p java/examples/binary/deployments/
   cp java/examples/maven/target/*.jar java/examples/binary/deployments/
 
   s2i build --copy java/examples/binary/ ${name} ${name}-binary-example
