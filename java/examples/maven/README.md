@@ -10,14 +10,8 @@ For local building, install s2i either from source https://github.com/openshift/
 
     sudo dnf install source-to-image
 
-Now to build the simplest possible Java server with OpenShift Source-To-Image (S2I) using the kubespheredev/java-8-centos7 builder:
+    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/maven/ kubespheredev/java-8-centos7 s2i-java-maven-example
 
-    s2i build https://github.com/kubesphere/s2i-java-example kubespheredev/java-8-centos7 s2i-java-example
-
-or
-
-    git clone https://github.com/kubesphere/s2i-java-example ; cd s2i-java-example
-    s2i build --copy . kubespheredev/java-8-cenotos7 s2i-java-example
 
 _NB The `--copy` ensures that the latest content of the current directory and not only it's commited .git content is used ([see S2I #418](https://github.com/openshift/source-to-image/issues/418))._
 
