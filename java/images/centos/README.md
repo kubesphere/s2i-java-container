@@ -184,6 +184,6 @@ To enable automatic restarts, three things are required:
 </build>
 ```
 
-3. Set environment variables `JAVA_DEBUG=true` or `DEBUG=true` and optionally `JAVA_DEBUG_PORT=<port-number>` or `DEBUG_PORT=<port-number>`, which defaults to 5005. Since the `DEBUG` variable clashes with Spring Boot's recognition of the same variable to enable Spring Boot debug logging, use `SPRINGBOOT_DEBUG` instead. 
+3. Set environment variables `JAVA_DEBUG=true` or `DEBUG=true` and optionally `JAVA_DEBUG_PORT=<port-number>` or `DEBUG_PORT=<port-number>`, which defaults to 5005. Since the `DEBUG` variable clashes with Spring Boot's recognition of the same variable to enable Spring Boot debug logging, use `SPRINGBOOT_DEBUG` instead.  You can set up environment variables `S2I_ARTIFACTS_DIR=true` to disable default S2I_ARTIFACTS_DIR,the default is false.Set `S2I_DESTINATION` to change the path which get source and artifacts, the default is `/tmp`.Environment variables `DEPLOYMENTS_DIR`,the path to deploy binary file,the default is`/deployments.
 
 WARNING: Do not use devtools in production!!! This can be accomplished in Maven using a custom profile.
