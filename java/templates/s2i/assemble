@@ -7,7 +7,7 @@ if [ "${DISABLE_ARTIFACTS}" = true ]; then
   echo "Disable default S2I_ARTIFACTS_DIR. Use custom args."
   maven_env_args=""
 else
-  maven_env_args="-Dmaven.repo.local=${S2I_ARTIFACTS_DIR}/m2"
+  maven_env_args="-Dmaven.repo.local=${S2I_ARTIFACTS_DIR}/.m2/repository"
 fi
 
 # =========================================================================
@@ -168,8 +168,8 @@ function build_maven() {
   # ======================
   # Remove repo if desired
   if [ "x${MAVEN_CLEAR_REPO}" != "x" ]; then
-    rm -rf "${S2I_ARTIFACTS_DIR}/m2"
-    check_error "Cannot remove local Maven repository ${S2I_ARTIFACTS_DIR}/m2" $?
+    rm -rf "${S2I_ARTIFACTS_DIR}/.m2/repository"
+    check_error "Cannot remove local Maven repository ${S2I_ARTIFACTS_DIR}/.m2/repository" $?
   fi
 
   cd ${old_dir}
