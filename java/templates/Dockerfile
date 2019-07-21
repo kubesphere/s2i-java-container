@@ -97,6 +97,8 @@ COPY apache_software_license_version_2.0-apache-2.0.txt /opt/fuse/licenses
 
 # Necessary to permit running with a randomised UID
 RUN mkdir -p /deployments/data \
+ && mkdir /tmp/artifacts \
+ && chown -R jboss:root /tmp/artifacts \
  && chmod -R "g+rwX" /deployments \
  && chown -R jboss:root /deployments \
  && chmod -R "g+rwX" {{= fp.config.base.home }} \
