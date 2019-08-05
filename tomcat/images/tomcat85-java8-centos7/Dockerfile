@@ -2,6 +2,20 @@ FROM kubespheredev/java-8-centos7
 
 MAINTAINER kubesphere@yunify.com
 
+# Some version information
+LABEL io.kubesphere.s2i.version.maven="3.5.4" \
+      io.k8s.description="Platform for building and running plain Java war applications" \
+      io.k8s.display-name="Tomacat Applications" \
+      io.kubesphere.tags="builder,java,war,tomcat" \
+      io.kubesphere.s2i.scripts-url="image:///usr/local/s2i" \
+      io.kubespehre.s2i.destination="/tmp" \
+      io.openshift.s2i.scripts-url="image:///usr/local/s2i" \
+      io.openshift.s2i.destination="/tmp" \
+      org.jboss.deployments-dir="/deployments" \
+      com.yunify.deployments-dir="/deployments" \
+      com.yunify.dev-mode="JAVA_DEBUG:false" \
+      com.yunify.dev-mode.port="JAVA_DEBUG_PORT:5005"
+
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.5.32
