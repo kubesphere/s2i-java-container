@@ -1,0 +1,90 @@
+body{background-color:#005CD3}
+
+/* remove shadowing on buttons and nav elements */
+.navbar-inverse, #menu-bar p, #menu-bar a, btn, .btn-primary, .btn-danger, .btn-success, .btn-default, .btn-info, .btn-warning {
+    background-image:none !important;
+    -webkit-text-shadow: none;
+    text-shadow: none;
+}
+
+/* hide breadcrumb on narrow displays */ 
+.breadcrumb{display:none;font-size:.9em}
+
+
+@media only screen and (min-width : 480px) {
+
+    .breadcrumb{padding:4px 15px;display:block}
+}
+
+.ui-front { z-index: 9999; }
+
+
+.alert-fixed {
+    width:100%;
+    position:fixed; 
+    top: 41px; 
+    right: 0; 
+    z-index:9999; 
+    border-radius:0px
+}
+.fixed-right{
+    width:100%;
+    position:fixed; 
+    right:0;  
+}
+
+#emptyInputErr.alert{top:74px}
+
+.errorMessage
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.noMargin{margin:0 !important}
+
+/* ku-card form */
+
+.frmFrame{
+    border:1px solid #ccc;
+    padding:14px 4px 7px 4px;
+}
+
+h2.frmHeading{
+    font-size:1.2em;
+    font-weight:700
+}
+
+@media all and (max-width: 721px) {
+
+    h1{font-size:22px;}
+}
+
+@media all and (min-width: 480px) {    
+    form.frmFrame{
+        padding:14px 4px 7px 14px;
+    }
+    form.frmFrame label{
+        text-align:right;
+        width:161px;
+    }
+    form.frmFrame p input[type="submit"]{
+        margin-left:165px;
+    }
+}
+
+@media all and (max-width:479px){
+    form.frmFrame{width:220px;
+                  padding-left: 7px;
+                  margin-left:auto;
+                  margin-right:auto
+    }
+    h2.frmHeading{
+        font-size:1em;
+    }
+    form.frmFrame p input,
+    form.frmFrame p button,
+    form.frmFrame p select
+    {width:204px;}
+    form.frmFrame p input{margin-left:0}
+}
