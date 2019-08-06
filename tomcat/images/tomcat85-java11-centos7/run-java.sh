@@ -506,7 +506,7 @@ java_options() {
   # Normalize spaces with awk (i.e. trim and elimate double spaces)
   # See e.g. https://www.physicsforums.com/threads/awk-1-1-1-file-txt.658865/ for an explanation
   # of this awk idiom
-  echo "${JAVA_OPTIONS:-} $(run_java_options) $(debug_options) $(proxy_options) $(java_default_options)" | awk '$1=$1'
+  echo "${JAVA_OPTIONS:-} $(debug_options) $(proxy_options) $(java_default_options)" | awk '$1=$1'
 }
 
 # Fetch classpath from env or from a local "run-classpath" file
