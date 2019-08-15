@@ -85,7 +85,7 @@ function test_entrypoint() {
 
 function test_container() {
   test_app $1
-  test_metrics $1
+#  test_metrics $1
 }
 
 # ==================================================================================
