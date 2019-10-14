@@ -15,7 +15,7 @@ pipeline {
       steps {
         container('nodejs') {
           sh 'yum -y install openssl-devel libcurl-devel.x86_64'
-          sh 'npm -g --unsafe-perm=true --allow-root install fish-pepper'
+          sh 'npm -g --unsafe-perm=true --allow-root install fish-pepper --build-from-source'
           sh '''wget -O s2i.tar.gz https://github.com/openshift/source-to-image/releases/download/v1.1.13/source-to-image-v1.1.13-b54d75d3-linux-amd64.tar.gz
   tar -xvf s2i.tar.gz
   cp ./s2i /usr/local/bin'''
