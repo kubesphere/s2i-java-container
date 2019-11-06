@@ -42,10 +42,10 @@ pipeline {
 docker tag s2i-java-11 kubespheredev/java-11-centos7
 docker tag s2i-tomcat85-java8 kubespheredev/tomcat85-java8-centos7
 docker tag s2i-tomcat85-java11 kubespheredev/tomcat85-java11-centos7'''
-          sh '''docker tag s2i-java kubespheredev/java-8-centos7:2.1
-docker tag s2i-java-11 kubespheredev/java-11-centos7:2.1
-docker tag s2i-tomcat85-java8 kubespheredev/tomcat85-java8-centos7:2.1
-docker tag s2i-tomcat85-java11 kubespheredev/tomcat85-java11-centos7:2.1 
+          sh '''docker tag s2i-java kubespheredev/java-8-centos7:2.1.0
+docker tag s2i-java-11 kubespheredev/java-11-centos7:2.1.0
+docker tag s2i-tomcat85-java8 kubespheredev/tomcat85-java8-centos7:2.1.0
+docker tag s2i-tomcat85-java11 kubespheredev/tomcat85-java11-centos7:2.1.0
 '''
         }
 
