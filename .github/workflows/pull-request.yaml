@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Dep
       run: |
-        curl -L https://github.com/linuxsuren/http-downloader/releases/latest/download/hd-linux-amd64.tar.gz | tar xzv
+        curl -L https://github.com/LinuxSuRen/http-downloader/releases/download/v0.0.29/hd-linux-amd64.tar.gz | tar xzv
         sudo rm -rf $(which hd)
         sudo mv hd /usr/local/bin
         sudo hd install openshift/source-to-image v1.3.1
@@ -38,8 +38,8 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          kubespheredev/s2i-java-11
-          ghcr.io/${{ github.repository_owner }}/s2i-java-11
+          kubespheredev/java-11-centos7
+          ghcr.io/${{ github.repository_owner }}/java-11-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -54,7 +54,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/${{ github.repository_owner }}/s2i-java-11
+          ghcr.io/${{ github.repository_owner }}/java-11-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -99,7 +99,7 @@ jobs:
         labels: ${{ steps.metaContributors.outputs.labels }}
         platforms: linux/amd64,linux/arm64
 
-  BuildCentOS:
+  BuildCentOSJava8:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -109,8 +109,8 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          kubespheredev/s2i-java
-          ghcr.io/${{ github.repository_owner }}/s2i-java
+          kubespheredev/java-8-centos7
+          ghcr.io/${{ github.repository_owner }}/java-8-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -125,7 +125,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/${{ github.repository_owner }}/s2i-java
+          ghcr.io/${{ github.repository_owner }}/java-8-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -180,8 +180,8 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          kubespheredev/s2i-tomcat85-java8
-          ghcr.io/${{ github.repository_owner }}/s2i-tomcat85-java8
+          kubespheredev/tomcat85-java8-centos7
+          ghcr.io/${{ github.repository_owner }}/tomcat85-java8-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -196,7 +196,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/${{ github.repository_owner }}/s2i-tomcat85-java8
+          ghcr.io/${{ github.repository_owner }}/tomcat85-java8-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -251,8 +251,8 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          kubespheredev/s2i-tomcat85-java11
-          ghcr.io/${{ github.repository_owner }}/s2i-tomcat85-java11
+          kubespheredev/tomcat85-java11-centos7
+          ghcr.io/${{ github.repository_owner }}/tomcat85-java11-centos7
         tags: |
           type=schedule
           type=ref,event=branch
@@ -267,7 +267,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/${{ github.repository_owner }}/s2i-tomcat85-java11
+          ghcr.io/${{ github.repository_owner }}/tomcat85-java11-centos7
         tags: |
           type=schedule
           type=ref,event=branch
