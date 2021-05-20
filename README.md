@@ -1,6 +1,8 @@
-### Source-to-Image Builder images [![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-8-centos7.svg?style=for-the-badge)](https://hub.docker.com/r/kubespheredev/java-8-centos7/) [![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-11-centos7.svg?style=for-the-badge)](https://hub.docker.com/r/kubespheredev/java-11-centos7/) 
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/kubesphere/s2i-java-container)
+[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-8-centos7.svg)](https://hub.docker.com/r/kubespheredev/java-8-centos7/)
+[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-11-centos7.svg)](https://hub.docker.com/r/kubespheredev/java-11-centos7/) 
 
-
+### Source-to-Image Builder images 
 
 
 #### Java S2I Builder image
