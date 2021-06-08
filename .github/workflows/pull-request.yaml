@@ -3,7 +3,8 @@ name: Pull Request
 on:
   push:
     branches:
-      - '**'
+      - master
+      - test-* # make it be easier for contributors to test
     tags:
       - 'v*.*.*'
   pull_request:
@@ -11,23 +12,6 @@ on:
       - 'master'
 
 jobs:
-  Test:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Dep
-      run: |
-        curl -L https://github.com/LinuxSuRen/http-downloader/releases/download/v0.0.29/hd-linux-amd64.tar.gz | tar xzv
-        sudo rm -rf $(which hd)
-        sudo mv hd /usr/local/bin
-        sudo hd install openshift/source-to-image v1.3.1
-        sudo apt-get install libkrb5-dev -y
-
-        sudo npm -g --unsafe-perm=true --allow-root install fish-pepper --build-from-source
-    - name: Test
-      run: |
-        ./test.sh
-
   BuildCentOSJava11:
     runs-on: ubuntu-20.04
     steps:
@@ -44,9 +28,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Docker meta for Contributors
       id: metaContributors
@@ -59,9 +43,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -115,9 +99,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Docker meta for Contributors
       id: metaContributors
@@ -130,9 +114,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -172,6 +156,7 @@ jobs:
 
   BuildTomcatJava8:
     runs-on: ubuntu-20.04
+    needs: BuildCentOSJava8
     steps:
     - uses: actions/checkout@v2
     - name: Docker meta for KubeSphere
@@ -186,9 +171,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Docker meta for Contributors
       id: metaContributors
@@ -201,9 +186,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -243,6 +228,7 @@ jobs:
 
   BuildTomcatJava11:
     runs-on: ubuntu-20.04
+    needs: BuildCentOSJava11
     steps:
     - uses: actions/checkout@v2
     - name: Docker meta for KubeSphere
@@ -257,9 +243,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Docker meta for Contributors
       id: metaContributors
@@ -272,9 +258,9 @@ jobs:
           type=schedule
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=semver,pattern=v{{version}}
+          type=semver,pattern=v{{major}}.{{minor}}
+          type=semver,pattern=v{{major}}
           type=sha
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
