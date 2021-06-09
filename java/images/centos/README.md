@@ -119,6 +119,11 @@ export MAVEN_OPTS="$(run-java.sh options --memory)"
 mvn clean install
 ```
 
+
+undefined
+
+Application arguments can be provided by setting the variable **JAVA_ARGS** to the corresponding value.
+
 ## Spring Boot Automatic Restarts 
 
 This image also supports detecting jars with [Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-devtools) included, which allows automatic restarts when files on the classpath are updated. Files can be easily updated in OpenShift using command [`oc rsync`](https://docs.openshift.org/latest/dev_guide/copy_files_to_container.html). 
