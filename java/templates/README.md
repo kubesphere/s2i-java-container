@@ -14,6 +14,11 @@ The following environment variables can be used to influence the behaviour of th
 * **ARTIFACT_COPY_ARGS** Arguments to use when copying artifacts from the output dir to the application dir. Useful to specify which artifacts will be part of the image. It defaults to `-r hawt-app/*` when a `hawt-app` dir is found on the build directory, otherwise jar files only will be included (`*.jar`).
 * **MAVEN_CLEAR_REPO** If set then the Maven repository is removed after the artifact is built. This is useful for keeping
   the created application image small, but prevents *incremental* builds. The default is `false`
+* **MAVEN_MIRROR_URL** If set then add a mirror with `<mirrorOf>external:*</mirrorOf>`. This should be a ULR of target Nexus mirror.
+
+### Custom maven settings
+
+If you want to use a custom maven settings.xml file. Please put it in your code repository. This template will take `configuration/settings.xml` as the custom config file.
 
 ## Run Time
 
