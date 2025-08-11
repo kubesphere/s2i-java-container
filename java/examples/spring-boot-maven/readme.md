@@ -27,5 +27,5 @@ Import as *Existing Maven Project* and run it as *Spring Boot App*.
 
 #### s2i 
 
-    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/spring-boot-maven/ kubespheredev/java-8-centos7 s2i-java-spring-maven-example
+    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/spring-boot-maven/ kubespheredev/java-8-ubuntu s2i-java-spring-maven-example
     docker run -p 8080:8080 s2i-java-spring-maven-example

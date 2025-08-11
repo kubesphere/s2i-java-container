@@ -4,7 +4,7 @@
 
 ### S2I
 
-    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/gradle/ kubespheredev/java-8-centos7 s2i-java-gradle-example
+    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/gradle/ kubespheredev/java-8-ubuntu s2i-java-gradle-example
     docker run -p 8080:8080 s2i-java-gradle-example
  
 

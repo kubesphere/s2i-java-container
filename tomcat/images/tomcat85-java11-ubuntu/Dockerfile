@@ -1,6 +1,4 @@
-FROM kubespheredev/java-8-centos7
-
-MAINTAINER kubesphere@yunify.com
+FROM kubespheredev/java-11-ubuntu
 
 # Some version information
 LABEL io.kubesphere.s2i.version.maven="3.5.4" \
@@ -15,7 +13,7 @@ LABEL io.kubesphere.s2i.version.maven="3.5.4" \
       com.yunify.deployments-dir="/deployments" \
       com.yunify.dev-mode="JAVA_DEBUG:false" \
       com.yunify.dev-mode.port="JAVA_DEBUG_PORT:5005"
-
+      
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.5.32

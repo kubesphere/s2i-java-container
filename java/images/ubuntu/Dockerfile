@@ -1,4 +1,6 @@
-FROM centos:7
+FROM ubuntu:24.04
+
+ARG TARGETARCH
 
 ARG EXPOSE_PORT=8080
 EXPOSE ${EXPOSE_PORT}
@@ -11,7 +13,7 @@ ENV JOLOKIA_VERSION="1.6.0" \
     JAVA_DATA_DIR="/deployments/data"
 
 # Some version information
-LABEL io.kubesphere.s2i.version.maven="3.6.0" \
+LABEL io.kubesphere.s2i.version.maven="3.5.4" \
       io.kubesphere.s2i.version.jolokia="1.6.0" \
       io.kubesphere.s2i.version.prometheus.jmx_exporter="0.3.1" \
       io.k8s.description="Platform for building and running plain Java applications (fat-jar and flat classpath)" \
@@ -32,25 +34,23 @@ USER root
 
 
 # Install Java package & download Maven from Apache
-RUN yum -y update \
-  && yum install -y --setopt=skip_missing_names_on_install=False \
-       unzip rsync \
-       java-11-openjdk \
-       java-11-openjdk-devel \
-  && yum clean all \
-  && curl https://archive.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz | \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates curl unzip rsync openjdk-8-jdk \
+  && apt-get clean \
+  && curl https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz | \
     tar -xzf - -C /opt \
-  && ln -s /opt/apache-maven-3.6.0 /opt/maven \
+  && ln -s /opt/apache-maven-3.5.4 /opt/maven \
   && ln -s /opt/maven/bin/mvn /usr/bin/mvn \
-  && groupadd -r jboss -g 1000 \
-  && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
+  && groupadd -r jboss -g 1001 \
+  && useradd -u 1001 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
   && chmod 755 /opt/jboss
 
-ENV JAVA_HOME /etc/alternatives/jre
-
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${TARGETARCH}
+ENV PATH=$PATH:${JAVA_HOME}/bin
 
 # Use /dev/urandom to speed up startups & Add jboss user to the root group
-RUN echo securerandom.source=file:/dev/urandom >> /usr/lib/jvm/java/conf/security/java.security \
+RUN echo securerandom.source=file:/dev/urandom >> /usr/lib/jvm/java-8-openjdk-${TARGETARCH}/jre/lib/security/java.security \
  && usermod -g root -G jboss jboss
 
 # Prometheus JMX exporter agent
@@ -118,7 +118,7 @@ WORKDIR /opt/jboss
 
 # S2I requires a numeric, non-0 UID. This is the UID for the jboss user in the base image
 
-USER 1000
+USER 1001
 RUN mkdir -p /opt/jboss/.m2
 COPY settings.xml /opt/jboss/.m2/settings.xml
 

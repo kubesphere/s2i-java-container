@@ -52,8 +52,8 @@ RUN yum -y update \
     tar -xzf - -C /opt \
   && ln -s /opt/apache-maven-{{= mavenVersion }} /opt/maven \
   && ln -s /opt/maven/bin/mvn /usr/bin/mvn \
-  && groupadd -r jboss -g 1000 \
-  && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
+  && groupadd -r jboss -g 1001 \
+  && useradd -u 1001 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
   && chmod 755 /opt/jboss
 
 ENV JAVA_HOME /etc/alternatives/jre
@@ -114,7 +114,7 @@ USER 185
 RUN mkdir -p /home/jboss/.m2
 COPY settings.xml /home/jboss/.m2/settings.xml
 {{??}}
-USER 1000
+USER 1001
 RUN mkdir -p /opt/jboss/.m2
 COPY settings.xml /opt/jboss/.m2/settings.xml
 {{?}}
