@@ -22,13 +22,13 @@ jobs:
         images: |
           kubespheredev/java-11-ubuntu
         tags: |
-          type=schedule
           type=ref,event=branch
           type=ref,event=pr
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
           type=semver,pattern=v{{major}}
           type=sha
+          type=raw,value=latest
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
@@ -59,13 +59,13 @@ jobs:
         images: |
           kubespheredev/java-8-ubuntu
         tags: |
-          type=schedule
           type=ref,event=branch
           type=ref,event=pr
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
           type=semver,pattern=v{{major}}
           type=sha
+          type=raw,value=latest
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
@@ -97,13 +97,13 @@ jobs:
         images: |
           kubespheredev/tomcat85-java8-ubuntu
         tags: |
-          type=schedule
           type=ref,event=branch
           type=ref,event=pr
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
           type=semver,pattern=v{{major}}
           type=sha
+          type=raw,value=latest
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
@@ -135,13 +135,13 @@ jobs:
         images: |
           kubespheredev/tomcat85-java11-ubuntu
         tags: |
-          type=schedule
           type=ref,event=branch
           type=ref,event=pr
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
           type=semver,pattern=v{{major}}
           type=sha
+          type=raw,value=latest
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
