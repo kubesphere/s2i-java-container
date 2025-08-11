@@ -1,5 +1,7 @@
 FROM ubuntu:24.04
 
+ARG TARGETARCH
+
 ARG EXPOSE_PORT=8080
 EXPOSE ${EXPOSE_PORT}
 
@@ -44,11 +46,11 @@ RUN apt-get update && \
   && useradd -u 1001 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
   && chmod 755 /opt/jboss
 
-ENV JAVA_HOME /etc/alternatives/jre
-
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${TARGETARCH}
+ENV PATH=$PATH:${JAVA_HOME}/bin
 
 # Use /dev/urandom to speed up startups & Add jboss user to the root group
-RUN echo securerandom.source=file:/dev/urandom >> /usr/lib/jvm/java/jre/lib/security/java.security \
+RUN echo securerandom.source=file:/dev/urandom >> /usr/lib/jvm/java-8-openjdk-${TARGETARCH}/jre/lib/security/java.security \
  && usermod -g root -G jboss jboss
 
 # Prometheus JMX exporter agent
