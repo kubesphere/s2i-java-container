@@ -40,8 +40,8 @@ RUN apt-get update && \
     tar -xzf - -C /opt \
   && ln -s /opt/apache-maven-3.6.0 /opt/maven \
   && ln -s /opt/maven/bin/mvn /usr/bin/mvn \
-  && groupadd -r jboss -g 1000 \
-  && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
+  && groupadd -r jboss -g 1001 \
+  && useradd -u 1001 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss \
   && chmod 755 /opt/jboss
 
 ENV JAVA_HOME /etc/alternatives/jre
@@ -116,7 +116,7 @@ WORKDIR /opt/jboss
 
 # S2I requires a numeric, non-0 UID. This is the UID for the jboss user in the base image
 
-USER 1000
+USER 1001
 RUN mkdir -p /opt/jboss/.m2
 COPY settings.xml /opt/jboss/.m2/settings.xml
 
