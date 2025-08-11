@@ -1,6 +1,6 @@
 #!/bin/sh
 # Global S2I variable setup
-source `dirname "$0"`/s2i-setup
+. `dirname "$0"`/s2i-setup
 
 # Maven arguments setting up the environment
 if [ "${DISABLE_ARTIFACTS}" = true ]; then
@@ -13,7 +13,7 @@ fi
 # =========================================================================
 # Helper functions:
 
-function check_error() {
+check_error() {
   local label=$1
   local error=$2
   if [ ${error} -ne 0 ]; then
@@ -22,7 +22,7 @@ function check_error() {
   fi
 }
 
-function get_maven_output_dir() {
+get_maven_output_dir() {
   local dir=""
 
   # If multi module build and no ARTIFACT_DIR is set --> error
@@ -52,7 +52,7 @@ function get_maven_output_dir() {
   echo ${dir}
 }
 
-function copy_dir() {
+copy_dir() {
   local src=$1
   local dest=$2
 
@@ -60,7 +60,7 @@ function copy_dir() {
   cp -a ${src}/* ${dest}
 }
 
-function copy_artifacts() {
+copy_artifacts() {
     local dir=$1
     local dest=$2
 
@@ -80,7 +80,7 @@ function copy_artifacts() {
     cp -v ${cp_args} ${dest}
 }
 
-function setup_maven() {
+setup_maven() {
   if [ -n "$HTTP_PROXY_HOST" -a -n "$HTTP_PROXY_PORT" ]; then
     xml="<proxy>\
          <id>genproxy</id>\
@@ -117,7 +117,7 @@ function setup_maven() {
   fi
 }
 
-function build_maven() {
+build_maven() {
   # Where artifacts are created during build
   local build_dir=$1
 
@@ -173,7 +173,7 @@ function build_maven() {
 # =========================================================================
 # Gradle support
 
-function get_gradle_output_dir() {
+get_gradle_output_dir() {
   local dir=""
 
   # If multi module build and no ARTIFACT_DIR is set --> error
@@ -190,7 +190,7 @@ function get_gradle_output_dir() {
   echo ${dir}
 }
 
-function build_gradle() {
+build_gradle() {
   # Where artifacts are created during build
   local build_dir=$1
 
