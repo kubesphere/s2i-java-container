@@ -1,4 +1,4 @@
-FROM centos:7
+FROM ubuntu:24.04
 
 ARG EXPOSE_PORT=8080
 EXPOSE ${EXPOSE_PORT}
@@ -32,12 +32,10 @@ USER root
 
 
 # Install Java package & download Maven from Apache
-RUN yum -y update \
-  && yum install -y --setopt=skip_missing_names_on_install=False \
-       unzip rsync \
-       java-11-openjdk \
-       java-11-openjdk-devel \
-  && yum clean all \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates unzip rsync openjdk-11-jdk \
+  && apt-get clean \
   && curl https://archive.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz | \
     tar -xzf - -C /opt \
   && ln -s /opt/apache-maven-3.6.0 /opt/maven \

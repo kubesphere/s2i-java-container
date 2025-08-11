@@ -1,3 +1,4 @@
+# DEPRECATED: DO NOT UPDATE THIS FILE
 # Changelog
 All notable changes to this project will be documented in this file.
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        # Console appender
+        <Console name="stdout" target="SYSTEM_OUT">
+            # Pattern of log message for console appender
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %C{2} (%F:%L) - %m%n"/>
+        </Console>
+
+
+
+    </Appenders>
+
+    <Loggers>
+        # Override log level for specified package
+        <Logger name="edu.ku.it.idm" level="DEBUG"/>
+
+
+        <Root level="WARN">
+            <AppenderRef ref="stdout"/>
+        </Root>
+    </Loggers>
+</Configuration>

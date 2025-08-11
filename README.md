@@ -1,6 +1,5 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/kubesphere/s2i-java-container)
-[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-8-centos7.svg)](https://hub.docker.com/r/kubespheredev/java-8-centos7/)
-[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-11-centos7.svg)](https://hub.docker.com/r/kubespheredev/java-11-centos7/) 
+[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-8-ubuntu.svg)](https://hub.docker.com/r/kubespheredev/java-8-ubuntu/)
+[![Docker Hub](https://img.shields.io/docker/pulls/kubespheredev/java-11-ubuntu.svg)](https://hub.docker.com/r/kubespheredev/java-11-ubuntu/) 
 
 ### Source-to-Image Builder images 
 
@@ -12,21 +11,14 @@ flat classpath applications. It supports flat-classpath and fat-jar packaged app
 
 #### Development
 
-The project use [fish-pepper](https://github.com/fabric8io-images/fish-pepper) to generete images/Dockerfiles, so do not directly change `run-java.sh`. 
+The project use [fish-pepper](https://github.com/fabric8io-images/fish-pepper) to generate images/Dockerfiles, so do not directly change `run-java.sh`. 
 Instead:
 - makes your change in [run-java-sh project](https://github.com/fabric8io-images/run-java-sh).
 - download and install [fish-pepper](https://github.com/fabric8io-images/fish-pepper) from `master`.
 - run it like `path/to/fishpepperrepo/fish-pepper.js` both in `./java` and `.karaf` directories.
 
-If you have errors please remove `.fp-git-blocks/` direcoties under both `./java` and `.karaf`.
+If you have errors please remove `.fp-git-blocks/` directories under both `./java` and `.karaf`.
 
 
-##### Release Notes
 
-Please keep the [CHANGELOG.md](CHANGELOG.md) up-to-date.
-
-##### Release Process
-
-
-Jenkins auto push a release of [kubespheredev/java-*-centos7 to Docker Hub](https://hub.docker.com/u/kubespheredev/):
 

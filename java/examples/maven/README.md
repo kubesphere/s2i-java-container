@@ -10,7 +10,7 @@ For local building, install s2i either from source https://github.com/openshift/
 
     sudo dnf install source-to-image
 
-    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/maven/ kubespheredev/java-8-centos7 s2i-java-maven-example
+    s2i build https://github.com/kubesphere/s2i-java-container --context-dir=java/examples/maven/ kubespheredev/java-8-ubuntu s2i-java-maven-example
 
 
 _NB The `--copy` ensures that the latest content of the current directory and not only it's commited .git content is used ([see S2I #418](https://github.com/openshift/source-to-image/issues/418))._
@@ -30,7 +30,7 @@ and see "hello, world" when accessing http://localhost:8080 - it works!
 
 ### Container options
 
-All JVM options documented on https://github.com/kubesphere/s2i-java-container/tree/master/java/images/centos
+All JVM options documented on https://github.com/kubesphere/s2i-java-container/tree/master/java/images/ubuntu
 are typically specified in [`.s2i/environment`](.s2i/environment), but for quick testing can obviously also be specified on the `docker run` CLI like so:
 
     docker run -e "JAVA_MAIN_CLASS=io.kubesphere.devops.s2i.example.Server" -p 8080:8080 s2i-java-example
@@ -47,5 +47,5 @@ are typically specified in [`.s2i/environment`](.s2i/environment), but for quick
 ## More background
 
 * https://github.com/kubesphere/s2i-java-container
-* https://github.com/kubesphere/s2i-java-container/tree/master/java/images/centos
+* https://github.com/kubesphere/s2i-java-container/tree/master/java/images/ubuntu
 * https://github.com/kubesphere/s2ioperator
