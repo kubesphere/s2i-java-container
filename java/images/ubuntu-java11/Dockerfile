@@ -34,7 +34,7 @@ USER root
 # Install Java package & download Maven from Apache
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ca-certificates unzip rsync openjdk-11-jdk \
+    ca-certificates curl unzip rsync openjdk-11-jdk \
   && apt-get clean \
   && curl https://archive.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz | \
     tar -xzf - -C /opt \
