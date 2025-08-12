@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:10
+FROM quay.io/centos/centos:9
 
 ARG EXPOSE_PORT=8080
 EXPOSE ${EXPOSE_PORT}
